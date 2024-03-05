@@ -13,13 +13,13 @@ import Foundation
 // SEA      sea.api.riotgames.com
 
 enum RiotRegion: String, CaseIterable {
-    case br1, eun1, euw1, jp1, kr1, la1, la2, na1, oc1, tr1, ru, ph2, sg2, th2, tw2, vn2
+    case br1, eun1, euw1, jp1, kr1, la1, la2, na1, oc1, tr1, ru, ph2, sg2, th2, tw2, vn2, EUW
 
     var regionalRouting: String {
         switch self {
         case .br1, .la1, .la2, .na1:
             return "americas.api.riotgames.com"
-        case .eun1, .euw1, .tr1:
+        case .eun1, .euw1, .tr1, .EUW:
             return "europe.api.riotgames.com"
         case .jp1, .kr1, .ru, .th2, .tw2, .vn2:
             return "asia.api.riotgames.com"
@@ -35,6 +35,8 @@ enum RiotRegion: String, CaseIterable {
         case .eun1:
             return "eun1.api.riotgames.com"
         case .euw1:
+            return "euw1.api.riotgames.com"
+        case .EUW:
             return "euw1.api.riotgames.com"
         case .jp1:
             return "jp1.api.riotgames.com"
