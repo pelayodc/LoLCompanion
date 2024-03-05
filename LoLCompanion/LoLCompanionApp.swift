@@ -19,14 +19,8 @@ struct LoLCompanionApp: App {
             ProcessesView()
                 .environmentObject(processWatcher)
             Divider()
-            if #available(macOS 14.0, *) {
-                SettingsLink {
-                    Text("Preferences")
-                }
-            } else {
-                Button("Settings") {
-                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-                }
+            Button("Settings") {
+                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
             }
             Divider()
             Button("Quit") {

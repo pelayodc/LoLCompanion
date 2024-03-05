@@ -9,13 +9,12 @@ import Foundation
 
 // MARK: - StaticData
 struct MatchInfo: Codable {
-    let metadata: Metadate
+    let metadata: Metadata
     let info: Info
 }
 
 // MARK: - Info
 struct Info: Codable {
-    let endOfGameResult : String
     let gameCreation, gameDuration, gameEndTimestamp, gameID: Int
     let gameMode, gameName: String
     let gameStartTimestamp: Int
@@ -28,7 +27,7 @@ struct Info: Codable {
     let tournamentCode: String
 
     enum CodingKeys: String, CodingKey {
-        case endOfGameResult, gameCreation, gameDuration, gameEndTimestamp
+        case gameCreation, gameDuration, gameEndTimestamp
         case gameID = "gameId"
         case gameMode, gameName, gameStartTimestamp, gameType, gameVersion
         case mapID = "mapId"
@@ -41,9 +40,9 @@ struct Info: Codable {
 
 // MARK: - Participant
 struct Participant: Codable {
-    let allInPings, assistMePings, assists: Int
+    let allInPings, assistMePings, assists, baitPings: Int
     let baronKills, basicPings, bountyLevel: Int
-    //let challenges: [String: DoubleOrList]
+    let challenges: [String: Double]
     let champExperience, champLevel, championID: Int
     let championName: String
     let championTransform, commandPings, consumablesPurchased, damageDealtToBuildings: Int
@@ -61,23 +60,18 @@ struct Participant: Codable {
     let kills: Int
     let lane: String
     let largestCriticalStrike, largestKillingSpree, largestMultiKill, longestTimeSpentLiving: Int
-    let magicDamageDealt, magicDamageDealtToChampions, magicDamageTaken: Int
-    let missions: [String: Double]
-    let needVisionPings: Int
+    let magicDamageDealt, magicDamageDealtToChampions, magicDamageTaken, needVisionPings: Int
     let neutralMinionsKilled, nexusKills, nexusLost, nexusTakedowns: Int
     let objectivesStolen, objectivesStolenAssists, onMyWayPings, participantID: Int
     let pentaKills: Int
     let perks: Perks
-    let physicalDamageDealt, physicalDamageDealtToChampions, physicalDamageTaken, placement: Int
-    let playerAugment1, playerAugment2, playerAugment3, playerAugment4: Int
-    let playerScore0, playerScore1, playerScore10, playerScore11, playerScore2, playerScore3, playerScore4: Int
-    let playerScore5, playerScore6, playerScore7, playerScore8,playerScore9, playerSubteamId, profileIcon: Int
+    let physicalDamageDealt, physicalDamageDealtToChampions, physicalDamageTaken, profileIcon: Int
     let pushPings: Int
     let puuid: String
     let quadraKills: Int
-    let riotIDTagline, role: String
+    let riotIDName, riotIDTagline, role: String
     let sightWardsBoughtInGame, spell1Casts, spell2Casts, spell3Casts: Int
-    let spell4Casts, subteamPlacement, summoner1Casts, summoner1ID, summoner2Casts: Int
+    let spell4Casts, summoner1Casts, summoner1ID, summoner2Casts: Int
     let summoner2ID: Int
     let summonerID: String
     let summonerLevel: Int
@@ -85,8 +79,8 @@ struct Participant: Codable {
     let teamEarlySurrendered: Bool
     let teamID: Int
     let teamPosition: String
-    let timeCCingOthers, timePlayed, totalAllyJungleMinionsKilled, totalDamageDealt, totalDamageDealtToChampions: Int
-    let totalDamageShieldedOnTeammates, totalDamageTaken, totalEnemyJungleMinionsKilled, totalHeal, totalHealsOnTeammates: Int
+    let timeCCingOthers, timePlayed, totalDamageDealt, totalDamageDealtToChampions: Int
+    let totalDamageShieldedOnTeammates, totalDamageTaken, totalHeal, totalHealsOnTeammates: Int
     let totalMinionsKilled, totalTimeCCDealt, totalTimeSpentDead, totalUnitsHealed: Int
     let tripleKills, trueDamageDealt, trueDamageDealtToChampions, trueDamageTaken: Int
     let turretKills, turretTakedowns, turretsLost, unrealKills: Int
@@ -95,27 +89,22 @@ struct Participant: Codable {
     let win: Bool
 
     enum CodingKeys: String, CodingKey {
-        case allInPings, assistMePings, assists, baronKills, basicPings, bountyLevel, champExperience, champLevel
+        case allInPings, assistMePings, assists, baitPings, baronKills, basicPings, bountyLevel, challenges, champExperience, champLevel
         case championID = "championId"
-        case championName, championTransform, commandPings, consumablesPurchased, damageDealtToBuildings, damageDealtToObjectives, damageDealtToTurrets, damageSelfMitigated, dangerPings, deaths, detectorWardsPlaced, doubleKills, dragonKills, eligibleForProgression, enemyMissingPings, enemyVisionPings, firstBloodAssist, firstBloodKill, firstTowerAssist, firstTowerKill, gameEndedInEarlySurrender, gameEndedInSurrender, getBackPings, goldEarned, goldSpent, holdPings, individualPosition, inhibitorKills, inhibitorTakedowns, inhibitorsLost, item0, item1, item2, item3, item4, item5, item6, itemsPurchased, killingSprees, kills, lane, largestCriticalStrike, largestKillingSpree, largestMultiKill, longestTimeSpentLiving, magicDamageDealt, magicDamageDealtToChampions, magicDamageTaken, missions, needVisionPings, neutralMinionsKilled, nexusKills, nexusLost, nexusTakedowns, objectivesStolen, objectivesStolenAssists, onMyWayPings
+        case championName, championTransform, commandPings, consumablesPurchased, damageDealtToBuildings, damageDealtToObjectives, damageDealtToTurrets, damageSelfMitigated, dangerPings, deaths, detectorWardsPlaced, doubleKills, dragonKills, eligibleForProgression, enemyMissingPings, enemyVisionPings, firstBloodAssist, firstBloodKill, firstTowerAssist, firstTowerKill, gameEndedInEarlySurrender, gameEndedInSurrender, getBackPings, goldEarned, goldSpent, holdPings, individualPosition, inhibitorKills, inhibitorTakedowns, inhibitorsLost, item0, item1, item2, item3, item4, item5, item6, itemsPurchased, killingSprees, kills, lane, largestCriticalStrike, largestKillingSpree, largestMultiKill, longestTimeSpentLiving, magicDamageDealt, magicDamageDealtToChampions, magicDamageTaken, needVisionPings, neutralMinionsKilled, nexusKills, nexusLost, nexusTakedowns, objectivesStolen, objectivesStolenAssists, onMyWayPings
         case participantID = "participantId"
-        case pentaKills, perks, physicalDamageDealt, physicalDamageDealtToChampions, physicalDamageTaken, placement, playerAugment1, playerAugment2, playerAugment3, playerAugment4, playerScore0, playerScore1, playerScore10, playerScore11, playerScore2, playerScore3, playerScore4, playerScore5, playerScore6, playerScore7, playerScore8,playerScore9, playerSubteamId, profileIcon, pushPings, puuid, quadraKills
-        //case riotIDName = "riotIdName"
+        case pentaKills, perks, physicalDamageDealt, physicalDamageDealtToChampions, physicalDamageTaken, profileIcon, pushPings, puuid, quadraKills
+        case riotIDName = "riotIdName"
         case riotIDTagline = "riotIdTagline"
-        case role, sightWardsBoughtInGame, spell1Casts, spell2Casts, spell3Casts, spell4Casts, subteamPlacement, summoner1Casts
+        case role, sightWardsBoughtInGame, spell1Casts, spell2Casts, spell3Casts, spell4Casts, summoner1Casts
         case summoner1ID = "summoner1Id"
         case summoner2Casts
         case summoner2ID = "summoner2Id"
         case summonerID = "summonerId"
         case summonerLevel, summonerName, teamEarlySurrendered
         case teamID = "teamId"
-        case teamPosition, timeCCingOthers, timePlayed, totalAllyJungleMinionsKilled, totalDamageDealt, totalDamageDealtToChampions, totalDamageShieldedOnTeammates, totalDamageTaken, totalEnemyJungleMinionsKilled, totalHeal, totalHealsOnTeammates, totalMinionsKilled, totalTimeCCDealt, totalTimeSpentDead, totalUnitsHealed, tripleKills, trueDamageDealt, trueDamageDealtToChampions, trueDamageTaken, turretKills, turretTakedowns, turretsLost, unrealKills, visionClearedPings, visionScore, visionWardsBoughtInGame, wardsKilled, wardsPlaced, win
+        case teamPosition, timeCCingOthers, timePlayed, totalDamageDealt, totalDamageDealtToChampions, totalDamageShieldedOnTeammates, totalDamageTaken, totalHeal, totalHealsOnTeammates, totalMinionsKilled, totalTimeCCDealt, totalTimeSpentDead, totalUnitsHealed, tripleKills, trueDamageDealt, trueDamageDealtToChampions, trueDamageTaken, turretKills, turretTakedowns, turretsLost, unrealKills, visionClearedPings, visionScore, visionWardsBoughtInGame, wardsKilled, wardsPlaced, win
     }
-}
-
-enum DoubleOrList: Codable {
-    case double(Double)
-    case array([Double])
 }
 
 // MARK: - Perks
@@ -183,7 +172,7 @@ struct Baron: Codable {
 }
 
 // MARK: - Metadata
-struct Metadate: Codable {
+struct Metadata: Codable {
     let dataVersion, matchID: String
     let participants: [String]
 

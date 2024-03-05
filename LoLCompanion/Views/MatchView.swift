@@ -47,8 +47,6 @@ struct MatchView: View {
         .frame(width: 200, height: 40, alignment: .center)
         .onAppear {
             getQueueName(for: gameResume.queueID)
-        }.onTapGesture {
-            print("TODO")
         }
     }
 

@@ -79,21 +79,10 @@ struct SummonerView: View {
                 Text(viewModel.remoteSummoner?.name ?? "Not Defined")
                     .font(Font.system(size: 16))
                     .fontWeight(.bold)
-                HStack {
-                    Text(viewModel.rankedStatus.first(where: {$0.queueType=="RANKED_SOLO_5x5"})?.tier ?? "Not Ranked")
-                        .font(Font.system(size: 14))
-                        .fontWeight(.medium)
-                    Text(viewModel.rankedStatus.first(where: {$0.queueType=="RANKED_SOLO_5x5"})?.rank ?? "")
-                        .font(Font.system(size: 14))
-                        .fontWeight(.medium)
-                }
-                HStack {
-                    Text(String( viewModel.rankedStatus.first(where: {$0.queueType=="RANKED_SOLO_5x5"})?.leaguePoints ?? 0))
-                        .font(Font.system(size: 14))
-                        .fontWeight(.medium)
-                    Text("LP")
-                }
-                if let rankedStatus = viewModel.rankedStatus.first(where: {$0.queueType=="RANKED_SOLO_5x5"}) {
+                Text(viewModel.rankedStatus.first?.rank ?? "Not Ranked")
+                    .font(Font.system(size: 14))
+                    .fontWeight(.medium)
+                if let rankedStatus = viewModel.rankedStatus.first {
                     HStack {
                         Text(String(rankedStatus.wins))
                             .foregroundColor(LoLCompanionColors.victory.swiftUI)
@@ -134,10 +123,6 @@ struct SummonerView: View {
         }
         .padding(16)
         .frame(width: 200, height: 60, alignment: .center)
-        .onTapGesture {
-            print("TODO load profileData")
-            
-        }
     }
 
     func comonUserDateView(for summoner: Summoner) -> some View {

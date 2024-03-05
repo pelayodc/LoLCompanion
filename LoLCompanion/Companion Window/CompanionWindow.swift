@@ -22,7 +22,7 @@ class CustomWindow: NSWindow {
 
         let mainView = CompanionView()
             .environmentObject(dragonManager)
-            .frame(width: rect.width, height: rect.height, alignment: .bottom)
+            .frame(width: rect.width, height: rect.height, alignment: .center)
 
         let hostingView = LoLCompanionHostingView(rootView: mainView)
         hostingView.frame = NSRect(origin: .zero, size: rect.size)

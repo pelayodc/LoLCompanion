@@ -41,8 +41,6 @@
 		A08C4FE82980443D0057C79A /* DDragonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C4FE72980443D0057C79A /* DDragonManager.swift */; };
 		A0C836D329828D5500602A58 /* LoLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C836D229828D5500602A58 /* LoLButton.swift */; };
 		A0C836D52982D17200602A58 /* RiotRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C836D42982D17200602A58 /* RiotRegion.swift */; };
-		EE7541B32B97BC3300453910 /* SummonerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7541B22B97BC3300453910 /* SummonerWindow.swift */; };
-		EE7541B52B97BCE100453910 /* SummonerExtendedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7541B42B97BCE100453910 /* SummonerExtendedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,11 +79,9 @@
 		A08C4FE3298040B00057C79A /* DDragonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDragonEndpoint.swift; sourceTree = "<group>"; };
 		A08C4FE52980417D0057C79A /* DDragonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDragonService.swift; sourceTree = "<group>"; };
 		A08C4FE72980443D0057C79A /* DDragonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDragonManager.swift; sourceTree = "<group>"; };
+		A0C836D129828C7C00602A58 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A0C836D229828D5500602A58 /* LoLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoLButton.swift; sourceTree = "<group>"; };
 		A0C836D42982D17200602A58 /* RiotRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiotRegion.swift; sourceTree = "<group>"; };
-		EE4754F82A16A15300EDFACB /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		EE7541B22B97BC3300453910 /* SummonerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerWindow.swift; sourceTree = "<group>"; };
-		EE7541B42B97BCE100453910 /* SummonerExtendedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerExtendedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +114,13 @@
 		A0280760297C4C1D000C8A01 /* LoLCompanion */ = {
 			isa = PBXGroup;
 			children = (
-				EE4754F82A16A15300EDFACB /* Config.xcconfig */,
+				A0C836D129828C7C00602A58 /* Config.xcconfig */,
 				A07B5FEB298288290027A6DD /* Info.plist */,
 				A0585286297D7672008B9F51 /* Network */,
 				A0280795297CB8EA000C8A01 /* Model */,
 				A0280794297CA704000C8A01 /* Processes */,
 				A0280793297CA6EA000C8A01 /* Managers */,
-				A0704F96297E99CE00E7B187 /* Windows */,
+				A0704F96297E99CE00E7B187 /* Companion Window */,
 				A0280792297CA6E2000C8A01 /* Views */,
 				A0280761297C4C1D000C8A01 /* LoLCompanionApp.swift */,
 				A0704F99297EAF9500E7B187 /* Extensions */,
@@ -152,7 +148,6 @@
 				A0585296297DA3F1008B9F51 /* CompanionView.swift */,
 				A0280790297CA61A000C8A01 /* SummonerView.swift */,
 				A05852A0297DB054008B9F51 /* MatchView.swift */,
-				EE7541B42B97BCE100453910 /* SummonerExtendedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,13 +209,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		A0704F96297E99CE00E7B187 /* Windows */ = {
+		A0704F96297E99CE00E7B187 /* Companion Window */ = {
 			isa = PBXGroup;
 			children = (
 				A0704F97297E99EB00E7B187 /* CompanionWindow.swift */,
-				EE7541B22B97BC3300453910 /* SummonerWindow.swift */,
 			);
-			path = Windows;
+			path = "Companion Window";
 			sourceTree = "<group>";
 		};
 		A0704F99297EAF9500E7B187 /* Extensions */ = {
@@ -328,7 +322,6 @@
 				A0C836D329828D5500602A58 /* LoLButton.swift in Sources */,
 				A03E58EC2981202D0031021A /* GameResume.swift in Sources */,
 				A0280764297C4C1D000C8A01 /* ProcessesView.swift in Sources */,
-				EE7541B52B97BCE100453910 /* SummonerExtendedView.swift in Sources */,
 				A0585297297DA3F1008B9F51 /* CompanionView.swift in Sources */,
 				A0585295297D78C0008B9F51 /* RiotService.swift in Sources */,
 				A05852A1297DB054008B9F51 /* MatchView.swift in Sources */,
@@ -336,7 +329,6 @@
 				A08C4FE4298040B00057C79A /* DDragonEndpoint.swift in Sources */,
 				A0280762297C4C1D000C8A01 /* LoLCompanionApp.swift in Sources */,
 				A0280771297C4F1F000C8A01 /* CompanionWindowManager.swift in Sources */,
-				EE7541B32B97BC3300453910 /* SummonerWindow.swift in Sources */,
 				A058528C297D76B8008B9F51 /* RequestError.swift in Sources */,
 				A0704F98297E99EB00E7B187 /* CompanionWindow.swift in Sources */,
 				A028078F297C81AD000C8A01 /* LoLManager.swift in Sources */,
@@ -353,6 +345,7 @@
 /* Begin XCBuildConfiguration section */
 		A028076B297C4C1E000C8A01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0C836D129828C7C00602A58 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -413,6 +406,7 @@
 		};
 		A028076C297C4C1E000C8A01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0C836D129828C7C00602A58 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -470,12 +464,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LoLCompanion/LoLCompanion.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LoLCompanion/Preview Content\"";
-				DEVELOPMENT_TEAM = Z5YU4LNU46;
+				DEVELOPMENT_TEAM = Y4872UA8FS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -503,12 +496,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LoLCompanion/LoLCompanion.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LoLCompanion/Preview Content\"";
-				DEVELOPMENT_TEAM = Z5YU4LNU46;
+				DEVELOPMENT_TEAM = Y4872UA8FS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -68,7 +68,7 @@ class ProcessWatcher: ObservableObject {
                     //        print(windowsList?.firstIndex(where: { $0[kCGWindowOwnerName as String] as? String ?? "" == "League of Legends" }))
                     let windowBounds = lolWindow[kCGWindowBounds as String] as? [String: Int]
                     let windowRect = NSRect(x: windowBounds?["X"] ?? 0, y: windowBounds?["Y"] ?? 0, width: windowBounds?["Width"] ?? 0, height: windowBounds?["Height"] ?? 0)
-                    let newCompanionWindowRect = NSRect(origin: CGPoint(x: windowRect.maxX, y: ((windowRect.origin.y * -1) + (windowRect.size.height/2) + 40)), size: CGSize(width: 200, height: windowRect.height))
+                    let newCompanionWindowRect = NSRect(origin: CGPoint(x: windowRect.maxX, y: ((windowRect.origin.y * -1) + windowRect.size.height)), size: CGSize(width: 200, height: windowRect.height))
 
                     DispatchQueue.main.async {
                         self.companionWindowManager.createWindow(with: newCompanionWindowRect)

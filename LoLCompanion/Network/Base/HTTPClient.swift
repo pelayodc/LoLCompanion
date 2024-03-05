@@ -58,29 +58,10 @@ extension HTTPClient {
 //                print("JSON String: \(String(data: urlSessionData, encoding: .utf8))")
             data = urlSessionData
             response = urlSessionResponse
-            
+
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.noResponse)
             }
-            
-            /*do {
-                let messages = try JSONDecoder().decode(responseModel, from: data!)
-                print(messages as Any)
-            } catch DecodingError.dataCorrupted(let context) {
-                print(context)
-            } catch DecodingError.keyNotFound(let key, let context) {
-                print("Key '\(key)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch DecodingError.valueNotFound(let value, let context) {
-                print("Value '\(value)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch DecodingError.typeMismatch(let type, let context) {
-                print("Type '\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch {
-                print("error: ", error)
-            }*/
-            
             switch response.statusCode {
             case 200...299:
                 guard let data = data, let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
