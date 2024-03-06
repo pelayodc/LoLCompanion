@@ -44,30 +44,33 @@ struct CompanionView: View {
     @ObservedObject var viewModel: CompanionViewModel = CompanionViewModel()
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                VStack(alignment: .leading) {
-                    SummonerView(viewModel: SummonerViewViewModel(lolManager: viewModel.lolManager))
-                    CustomDivider(color: .gold, frame: NSSize(width: 168, height: 2))
-                        .padding(16)
-                    Text("Last Games:")
-                        .font(Font.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding(.leading, 16)
-                    ForEach(viewModel.lastGames, id: \.id) { game in
-                        MatchView(gameResume: game)
-                        CustomDivider(color: .grey, frame: NSSize(width: 168, height: 1))
-                            .padding(16)
-                    }
-                }
-                Button("Force Update Match Data") {
-                    updateData()
-                }.buttonStyle(LoLButton())
+        VStack(alignment: .leading) {
+            SummonerView(viewModel: SummonerViewViewModel(lolManager: viewModel.lolManager)).padding(.top)
+            CustomDivider(color: .gold, frame: NSSize(width: 168, height: 2))
                 .padding(16)
+            Text("Last Games:")
+                .font(Font.system(size: 16))
+                .fontWeight(.semibold)
+                .padding(.leading, 16)
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    VStack(alignment: .leading) {
+                        
+                        ForEach(viewModel.lastGames, id: \.id) { game in
+                            MatchView(gameResume: game)
+                            CustomDivider(color: .grey, frame: NSSize(width: 168, height: 1))
+                                .padding(16)
+                        }
+                    }
+                    Button("Force Update Match Data") {
+                        updateData()
+                    }.buttonStyle(LoLButton())
+                        .padding(16)
+                }
+                .padding(.vertical, 16)
+            }.task {
+                updateData()
             }
-            .padding(.vertical, 16)
-        }.task {
-            updateData()
         }
         .background(
             LoLCompanionColors.background.swiftUI

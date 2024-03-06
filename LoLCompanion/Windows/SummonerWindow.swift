@@ -11,16 +11,18 @@ import SwiftUI
 
 class SummonerWindow: NSWindow {
 
-    init(with rect: NSRect) {
+    init(with rect: NSRect, data: SummonerViewViewModel) {
         super.init(contentRect: rect, styleMask: [], backing: .buffered, defer: false)
 
         isReleasedWhenClosed = false
 
         let dragonManager = DDragonManager()
 
-        let mainView = SummonerExtendedView(viewModel: SummonerViewViewModel.init(lolManager: LoLManager()))
+        let mainView = SummonerExtendedView(viewModel: data, myWindow: self)
             .environmentObject(dragonManager)
-            .frame(width: rect.width, height: rect.height, alignment: .bottom)
+            .frame(width: rect.width, height: rect.height, alignment: .top).background(
+                LoLCompanionColors.background.swiftUI
+            )
 
         let hostingView = LoLCompanionHostingView(rootView: mainView)
         hostingView.frame = NSRect(origin: .zero, size: rect.size)
@@ -44,8 +46,8 @@ class SummonerWindow: NSWindow {
         print("CustomWindow DE-INIT")
     }
 
-    override var canBecomeKey: Bool { false }
-    override var canBecomeMain: Bool { false }
+    //override var canBecomeKey: Bool { false }
+    //override var canBecomeMain: Bool { false }
 
     func presentWindow() {
         orderFront(nil)

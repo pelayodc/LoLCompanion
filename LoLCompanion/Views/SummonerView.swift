@@ -11,7 +11,7 @@ import Combine
 class SummonerViewViewModel: ObservableObject {
     private var lolManager: LoLManager
     private var scope = Set<AnyCancellable>()
-
+    
     @Published var localSummoner: Summoner?
     @Published var remoteSummoner: Summoner?
     @Published var rankedStatus: [RankedStatus] = []
@@ -135,8 +135,9 @@ struct SummonerView: View {
         .padding(16)
         .frame(width: 200, height: 60, alignment: .center)
         .onTapGesture {
-            print("TODO load profileData")
-            
+            let SumWin = SummonerWindow.init(with: CGRect(x: 0, y: 0, width: 800, height: 500), data: viewModel)
+            SumWin.makeKeyAndOrderFront(self)
+            SumWin.center()
         }
     }
 
